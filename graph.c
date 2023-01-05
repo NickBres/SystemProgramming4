@@ -151,36 +151,35 @@ void delete_node_cmd(pnode *head)
     //printf("Enter node number: ");
     scanf("%d", &node_num);
 
-    if ((*head)->node_num == node_num)
-    { // node is head
-        pnode temp = *head;
-        *head = (*head)->next;
-        free_node(temp);
-        return;
-    }
-    pnode before = find_node_before(*head, node_num);
-    if (before == NULL)
-    { // node not found
-        printf("1.Error: node %d does not exist\n", node_num);
+    pnode node = find_node(*head, node_num);
+    if (node == NULL)
+    {
+        printf("0.Error: node %d does not exist\n", node_num);
         exit(1);
     }
-    // node is not head
-    pnode temp = before->next;
-    before->next = temp->next;
-    free_node(temp);
+    free_node(head, node);
     return;
 };
 
-void free_node(pnode node)
+void free_node(pnode *head,pnode node)
 {
-    disconnect_node(node, node->node_num);
+    if (node == *head)
+    {
+        *head = node->next;
+    }
+    else
+    {
+        pnode before = find_node_before(*head, node->node_num);
+        before->next = node->next;
+    }
+    disconnect_node(*head, node->node_num);
     free(node->edges);
     free(node);
 };
 void disconnect_node(pnode head, int node_num)
 {
     pnode temp = head;
-    while (temp != NULL) // look for nodes with edges to node_num
+    while (temp != NULL && temp->edges != NULL) // look for nodes with edges to node_num
     {
         for (int i = 0; i < 2; i++)
         {
@@ -220,7 +219,7 @@ void deleteGraph_cmd(pnode *head)
     while (temp != NULL)
     {
         pnode next = temp->next;
-        free_node(temp);
+        free_node(head,temp);
         temp = next;
     }
     *head = NULL;
