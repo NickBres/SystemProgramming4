@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -fPIC
+CFLAGS = -Wall -g -fPIC
 
 all: graph
 	clear
@@ -14,4 +14,4 @@ graph: main.o graph.o algo.o
 #------------------------------
 
 clean:
-	rm  *.o main
+	rm  *.o graph

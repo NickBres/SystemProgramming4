@@ -45,6 +45,7 @@ int main(void)
         else if (c != ' ')
         {
             // quit
+            deleteGraph_cmd(&head);
             break;
         }
     }

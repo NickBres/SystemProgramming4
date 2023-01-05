@@ -257,4 +257,5 @@ void TSP_cmd(pnode head){
     }
     int bestRoute = find_best_route(head, nodes, num);
     printf("TSP shortest path: %d \n", bestRoute == INT_MAX ? -1 : bestRoute);
+    free(nodes);
 };

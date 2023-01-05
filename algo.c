@@ -8,7 +8,7 @@ int find_best_route(pnode head,int* nodes,int size){
 
     for(int i = 0; i < number_of_routes; i++){
         if(i % (number_of_routes/size) == 0){ // routes that starts with the same node
-            dijkstra(head,find_node(head,nodes[i]));
+            dijkstra(head,find_node(head,possible_routes[i][0]));
         }
         if(find_node(head,possible_routes[i][size - 1])->d != INT_MAX){ // if there is a route to the last node
             int route = 0;
