@@ -35,6 +35,7 @@ int main(void)
         else if (c == 'T')
         {
             // travelling salesman problem
+            TSP_cmd(head);
         }
         else if (c == 'P')
         {

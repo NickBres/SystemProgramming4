@@ -113,7 +113,6 @@ void insert_node(pnode *head, pnode new_node)
 
 pnode find_node(pnode head, int node_num)
 {
-    printf("Finding node %d\n", node_num);
     if (head == NULL)
     { // empty list
         return NULL;
@@ -216,7 +215,6 @@ void printGraph_cmd(pnode head)
 }; // for self debug
 void deleteGraph_cmd(pnode *head)
 {
-    printf("Deleting graph\n");
     pnode temp = *head;
     while (temp != NULL)
     {
@@ -246,4 +244,16 @@ void shortsPath_cmd(pnode head)
     printf("Shortest path from %d to %d: %d\n", node1, node2, second->d == INT_MAX ? -1 : second->d);
 
 };
-void TSP_cmd(pnode head){};
+void TSP_cmd(pnode head){
+    printf("Enter number of nodes to visit: ");
+    int num;
+    scanf(" %d", &num);
+    int *nodes = (int *)malloc(sizeof(int) * num);
+    printf("Enter nodes to visit: ");
+    for (int i = 0; i < num; i++)
+    {
+        scanf(" %d", &nodes[i]);
+    }
+    int bestRoute = find_best_route(head, nodes, num);
+    printf("Best route: %d\n", bestRoute == INT_MAX ? -1 : bestRoute);
+};
