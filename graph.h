@@ -1,9 +1,6 @@
 #ifndef GRAPH_
 #define GRAPH_
 
-#define INT_MIN -2147483648 //integer min value
-#define INT_MAX 2147483647 //integer max value
-
 typedef struct GRAPH_NODE_ *pnode;
 
 typedef struct edge_ {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "graph.h"
+#include "algo.h"
 
 void build_graph_cmd(pnode *head)
 {
@@ -51,8 +52,8 @@ pnode create_node(int node_num, pnode to1, int edge1_w, pnode to2, int edge2_w)
     new_node->edges = pedges;
 
     new_node->next = NULL;
-    new_node->d = INT_MAX;
-    new_node->isVisited = 0;
+    new_node->d = -1;
+    new_node->isVisited = -1;
     return new_node;
 };
 

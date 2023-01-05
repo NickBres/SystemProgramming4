@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define INT_MIN -2147483648 //integer min value
+#define INT_MAX 2147483647 //integer max value
+
 void dijkstra(pnode head,pnode start); // dijkstra algorithm
 pnode find_min_not_visited(pnode head); // find the node with the smallest distance that is not visited
 int find_best_route(pnode head,int* nodes,int size); // looking for the best route in graph with given nodes
