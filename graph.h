@@ -31,8 +31,8 @@ void deleteGraph_cmd(pnode* head);
 void shortsPath_cmd(pnode head);
 void TSP_cmd(pnode head);
 
+// ---------- helper functions ----------
 void free_node(pnode node); // free node memory
-void free_edge(pedge edge); // free edge memory
 pnode find_node_before(pnode head, int node_num); // find node before node_num
 pnode find_node(pnode head, int node_num); // find node with node_num
 void insert_node(pnode *head, pnode new_node); // insert node into graph

@@ -3,7 +3,7 @@ CFLAGS = -Wall -Wextra -fPIC
 
 all: main
 	clear
-	./main
+#   ./main
 
 main: main.o graph.o algo.o
 	$(CC) $(CFLAGS) $^ -o $@

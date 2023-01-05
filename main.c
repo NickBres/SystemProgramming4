@@ -5,12 +5,12 @@ int main(void)
 {
 
     pnode head = NULL;
+    char c = 'N';
 
-    while (1)
+    while (c != EOF)
     {
-        char c;
-        printf("Enter command: ");
-        scanf(" %c", &c);
+        // printf("Enter A to create graph, B to add node, D to delete node, S to find shortest path, T to find TSP, P to print graph, Q to quit: ");
+        c = getchar();
 
         if (c == 'A')
         {
@@ -42,7 +42,7 @@ int main(void)
             // print graph
             printGraph_cmd(head);
         }
-        else
+        else if (c != ' ')
         {
             // quit
             break;

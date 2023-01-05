@@ -27,6 +27,7 @@ int find_best_route(pnode head,int* nodes,int size){
             }
         }
     }
+    free_permutations(possible_routes,number_of_routes);
     return best_route;
 }
 
@@ -148,6 +149,13 @@ int **get_permutations(int *arr, int size) {
   int count = 0;
   permute(arr, 0, size - 1, &result, &count);
   return result;
+}
+
+void free_permutations(int **permutations, int size) {
+  for (int i = 0; i < size; i++) {
+    free(permutations[i]);
+  }
+  free(permutations);
 }
 
 

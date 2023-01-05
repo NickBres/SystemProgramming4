@@ -8,7 +8,7 @@ void build_graph_cmd(pnode *head)
         deleteGraph_cmd(head);
     }
     int size;
-    printf("Enter number of nodes: ");
+    //printf("Enter number of nodes: ");
     scanf("%d", &size);
 
     build_empty_graph(head, size);
@@ -16,7 +16,7 @@ void build_graph_cmd(pnode *head)
     while (1)
     {
         char c;
-        printf("Enter n to add node, any other key to quit: ");
+        //printf("Enter n to add node, any other key to quit: ");
         scanf(" %c", &c);
         if (c != 'n')
         {
@@ -28,7 +28,7 @@ void build_graph_cmd(pnode *head)
 
 void build_empty_graph(pnode *head, int size)
 {
-    printf("Building empty graph with %d nodes\n", size);
+    //printf("Building empty graph with %d nodes\n", size);
     for (int i = 0; i < size; i++)
     {
         pnode new_node = create_node(i, NULL, 0, NULL, 0);
@@ -58,26 +58,26 @@ pnode create_node(int node_num, pnode to1, int edge1_w, pnode to2, int edge2_w)
 
 void insert_node_cmd(pnode *head)
 {
-    printf("Inserting node\n");
+    //printf("Inserting node\n");
     int node_num;
     int to1, edge1_w, to2, edge2_w;
-    printf("Enter node number: ");
+   // printf("Enter node number: ");
     scanf("%d", &node_num);
-    printf("Enter node to 1: ");
+   // printf("Enter node to 1: ");
     scanf("%d", &to1);
-    printf("Enter edge 1 weight: ");
+   // printf("Enter edge 1 weight: ");
     scanf("%d", &edge1_w);
-    printf("Enter node to 2: ");
+    //printf("Enter node to 2: ");
     scanf("%d", &to2);
-    printf("Enter edge 2 weight: ");
+    //printf("Enter edge 2 weight: ");
     scanf("%d", &edge2_w);
-    printf("Inserting node %d with edges to %d (%d) and %d (%d)\n", node_num, to1, edge1_w, to2, edge2_w);
+    //printf("Inserting node %d with edges to %d (%d) and %d (%d)\n", node_num, to1, edge1_w, to2, edge2_w);
     pnode first = find_node(*head, to1);
     pnode second = find_node(*head, to2);
     if (first == NULL || second == NULL)
     {
-        printf("Error: node %d or %d does not exist\n", to1, to2);
-        return;
+        printf("0.Error: node %d or %d does not exist\n", to1, to2);
+        exit(1);
     }
     pnode curr = find_node(*head, node_num);
     if (curr != NULL)
@@ -145,9 +145,9 @@ pnode find_node_before(pnode head, int node_num)
 
 void delete_node_cmd(pnode *head)
 {
-    printf("Deleting node\n");
+    //printf("Deleting node\n");
     int node_num;
-    printf("Enter node number: ");
+    //printf("Enter node number: ");
     scanf("%d", &node_num);
 
     if ((*head)->node_num == node_num)
@@ -160,8 +160,8 @@ void delete_node_cmd(pnode *head)
     pnode before = find_node_before(*head, node_num);
     if (before == NULL)
     { // node not found
-        printf("Error: node %d does not exist\n", node_num);
-        return;
+        printf("1.Error: node %d does not exist\n", node_num);
+        exit(1);
     }
     // node is not head
     pnode temp = before->next;
@@ -194,7 +194,7 @@ void disconnect_node(pnode head, int node_num)
 };
 void printGraph_cmd(pnode head)
 {
-    printf("Printing graph\n");
+    //printf("Printing graph\n");
     pnode temp = head;
     while (temp != NULL)
     {
@@ -226,34 +226,34 @@ void deleteGraph_cmd(pnode *head)
 };
 void shortsPath_cmd(pnode head)
 {
-    printf("Enter first node: ");
+    //printf("Enter first node: ");
     int node1;
-    scanf(" %d", &node1);
-    printf("Enter second node: ");
+    scanf("%d", &node1);
+    //printf("Enter second node: ");
     int node2;
-    scanf(" %d", &node2);
+    scanf("%d", &node2);
 
     pnode first = find_node(head, node1);
     pnode second = find_node(head, node2);
     if (first == NULL || second == NULL)
     {
-        printf("Error: node %d or %d does not exist\n", node1, node2);
-        return;
+        printf("2.Error: node %d or %d does not exist\n", node1, node2);
+        exit(1);
     }
     dijkstra(head, first);
-    printf("Shortest path from %d to %d: %d\n", node1, node2, second->d == INT_MAX ? -1 : second->d);
+    printf("Dijsktra shortest path: %d \n", second->d == INT_MAX ? -1 : second->d);
 
 };
 void TSP_cmd(pnode head){
-    printf("Enter number of nodes to visit: ");
+    //printf("Enter number of nodes to visit: ");
     int num;
-    scanf(" %d", &num);
+    scanf("%d", &num);
     int *nodes = (int *)malloc(sizeof(int) * num);
-    printf("Enter nodes to visit: ");
+    //printf("Enter nodes to visit: ");
     for (int i = 0; i < num; i++)
     {
-        scanf(" %d", &nodes[i]);
+        scanf("%d", &nodes[i]);
     }
     int bestRoute = find_best_route(head, nodes, num);
-    printf("Best route: %d\n", bestRoute == INT_MAX ? -1 : bestRoute);
+    printf("TSP shortest path: %d \n", bestRoute == INT_MAX ? -1 : bestRoute);
 };
