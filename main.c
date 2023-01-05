@@ -9,7 +9,6 @@ int main(void)
 
     while (c != EOF)
     {
-        // printf("Enter A to create graph, B to add node, D to delete node, S to find shortest path, T to find TSP, P to print graph, Q to quit: ");
         c = getchar();
 
         if (c == 'A')
@@ -45,10 +44,10 @@ int main(void)
         else if (c != ' ')
         {
             // quit
-            deleteGraph_cmd(&head);
             break;
         }
     }
 
+    deleteGraph_cmd(&head); // free memory
     return 0;
 };
