@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -g -fPIC
 
 all: graph
-	clear
+	
 
 graph: node.o edge.o graph.o algo.o main.o
 	$(CC) $(CFLAGS) $^ -o $@

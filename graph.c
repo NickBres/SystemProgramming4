@@ -1,10 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "graph.h"
 #include "edge.h"
 #include "node.h"
+#include "algo.h"
 
 
-void build_graph_cmd(pnode *head)
+char build_graph_cmd(pnode *head)
 {
     if (*head != NULL) // if graph already exists
     {
@@ -19,13 +21,13 @@ void build_graph_cmd(pnode *head)
     {
         char c; // get command n to add data to node
         scanf(" %c", &c);
-        printf(":%c\n",c);
         if (c != 'n')
         {
-            break;
+            return c;
         }
         insert_node_cmd(head); // add data to node, if node doesn't exist, create it
     }
+    return ' ';
 };
 
 void build_empty_graph(pnode *head, int size)
@@ -51,8 +53,7 @@ void insert_node_cmd(pnode *head)
 
     int endpoint_num, weight;
     // get endpoint and weight
-    printf("Enter endpoint and weight (EOF to stop): \n");
-    while(scanf(" %d %d", &endpoint_num, &weight) != EOF){
+    while(scanf(" %d %d", &endpoint_num, &weight) == 2){
         pnode endpoint = find_node(*head, endpoint_num); // find endpoint node
         if (endpoint == NULL)                           // endpoint node does not exist
         {
@@ -66,8 +67,7 @@ void insert_node_cmd(pnode *head)
             continue;
         }
         edge = create_edge(endpoint, weight); // create edge
-        add_edge(curr->edges, edge);               // add edge to node
-        printf("Enter endpoint and weight (EOF to stop): \n");
+        curr->edges = add_edge(curr->edges, edge);               // add edge to node
     }
 };
 

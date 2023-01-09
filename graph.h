@@ -23,7 +23,7 @@ typedef struct GRAPH_NODE_ {
 #define INT_MIN -2147483648 //integer min value
 #define INT_MAX 2147483647 //integer max value
 
-void build_graph_cmd(pnode *head);
+char build_graph_cmd(pnode *head);
 void insert_node_cmd(pnode *head);
 void delete_node_cmd(pnode *head);
 void printGraph_cmd(pnode head); //for self debug

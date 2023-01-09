@@ -5,16 +5,18 @@ int main(void)
 {
 
     pnode head = NULL;
-    char c = 'N';
+    char c = '\0';
 
-    while (c != EOF)
+    while (1)
     {
-        c = getchar();
-
+        if(!c){
+            scanf(" %c", &c);
+        }
         if (c == 'A')
         {
             // create graph
-            build_graph_cmd(&head);
+            c = build_graph_cmd(&head);
+            continue;
         }
         else if (c == 'B')
         {
@@ -46,6 +48,8 @@ int main(void)
             // quit
             break;
         }
+        c = '\0';
+      
     }
 
     deleteGraph_cmd(&head); // free memory

@@ -3,5 +3,12 @@
         "stdio.h": "c",
         "node.h": "c",
         "edge.h": "c"
-    }
+    },
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/nikita/Desktop/SystemProgramming4",
+            "binaryPath": "/home/nikita/Desktop/SystemProgramming4/graph",
+            "binaryArgs": []
+        }
+    ]
 }
