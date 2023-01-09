@@ -2,8 +2,9 @@ CC = gcc
 CFLAGS = -Wall -g -fPIC
 
 all: graph
+	clear
 
-graph: main.o graph.o algo.o
+graph: node.o edge.o graph.o algo.o main.o
 	$(CC) $(CFLAGS) $^ -o $@
 
 #------- o files-------

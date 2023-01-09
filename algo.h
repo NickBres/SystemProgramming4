@@ -1,9 +1,7 @@
-#include "graph.h"
-#include <stdio.h>
-#include <stdlib.h>
+#ifndef ALGO_H
+#define ALGO_H
 
-#define INT_MIN -2147483648 //integer min value
-#define INT_MAX 2147483647 //integer max value
+#include "graph.h"
 
 void dijkstra(pnode head,pnode start); // dijkstra algorithm
 pnode find_min_not_visited(pnode head); // find the node with the smallest distance that is not visited
@@ -13,3 +11,5 @@ int **get_permutations(int *arr, int size); // generate all permutations of give
 void permute(int *arr, int l, int r, int ***result, int *count); // generate all permutations of given array in recursive way
 int number_of_permutations(int size); // number of permutations of given size
 void free_permutations(int **permutations, int size); // free all permutations
+
+#endif

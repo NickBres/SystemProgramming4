@@ -1,4 +1,7 @@
+#include <stdlib.h>
 #include "algo.h"
+#include "node.h"
+
 
 int find_best_route(pnode head, int *nodes, int size)
 {
