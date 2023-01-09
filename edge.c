@@ -79,7 +79,7 @@ void print_edges(pedge head)
     pedge temp = head;
     while (temp != NULL) // go over all edges in list
     {
-        printf("--> %d w: %d ", temp->endpoint->node_num, temp->weight);
+        printf("--> %d w: %d, ", temp->endpoint->node_num, temp->weight);
         temp = temp->next;
     }
     printf("\n");

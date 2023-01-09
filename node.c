@@ -72,21 +72,24 @@ pnode find_node_before(pnode head, int node_num)
 void disconnect_node(pnode head, pnode nodeToDisconnect)
 {
     pnode temp = head;
-    while (temp != NULL && temp->edges != NULL) // look for nodes with edges to node_num
+    while (temp != NULL) // look for nodes with edges to node_num
     {
-        pedge edge = find_edge_to(temp->edges, nodeToDisconnect);
-        if (edge != NULL) // node has edge to nodeToDisconnect
+        if (temp->edges != NULL)
         {
-            if (edge == temp->edges) // edge is head
+            pedge edge = find_edge_to(temp->edges, nodeToDisconnect);
+            if (edge != NULL) // node has edge to nodeToDisconnect
             {
-                temp->edges = edge->next;
+                if (edge == temp->edges) // edge is head
+                {
+                    temp->edges = edge->next;
+                }
+                else // edge is not head
+                {
+                    pedge before = find_edge_before(temp->edges, edge->endpoint);
+                    before->next = edge->next;
+                }
+                free(edge);
             }
-            else // edge is not head
-            {
-                pedge before = find_edge_before(temp->edges, edge->endpoint);
-                before->next = edge->next;
-            }
-            free(edge);
         }
         temp = temp->next;
     }

@@ -92,6 +92,7 @@ void delete_node_cmd(pnode *head)
 void printGraph_cmd(pnode head)
 {
     pnode temp = head;
+    printf("------Graph-------\n");
     while (temp != NULL)
     {
         printf("Node %d: \n     ", temp->node_num);
