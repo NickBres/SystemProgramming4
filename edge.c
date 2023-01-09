@@ -13,7 +13,7 @@ pedge create_edge(pnode endpoint, int weight)
 
 pedge add_edge(pedge head, pedge new_edge)
 {
-    if(head == NULL) // empty list
+    if (head == NULL) // empty list
     {
         head = new_edge;
         return head;
@@ -27,8 +27,9 @@ pedge add_edge(pedge head, pedge new_edge)
     return head;
 };
 
-void free_edges(pedge head){
-    if(head == NULL) // empty list
+void free_edges(pedge head)
+{
+    if (head == NULL) // empty list
     {
         return;
     }
@@ -44,28 +45,28 @@ void free_edges(pedge head){
 
 pedge find_edge_to(pedge head, pnode endpoint)
 {
-    if(head == NULL) // empty list
+    if (head == NULL) // empty list
     {
         return NULL;
     }
-    if(head->endpoint == endpoint) // edge is head
+    if (head->endpoint == endpoint) // edge is head
     {
         return head;
     }
     pedge before = find_edge_before(head, endpoint); // edge is not head
-    return before != NULL ? before->next : NULL; // edge found
+    return before != NULL ? before->next : NULL;     // edge found
 };
 
 pedge find_edge_before(pedge head, pnode endpoint)
 {
-    if(head == NULL) // empty list
+    if (head == NULL) // empty list
     {
         return NULL;
     }
     pedge temp = head;
-    while (temp->next != NULL) 
+    while (temp->next != NULL)
     {
-        if(temp->next->endpoint == endpoint)
+        if (temp->next->endpoint == endpoint)
         {
             return temp;
         }

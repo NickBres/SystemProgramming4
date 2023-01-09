@@ -9,7 +9,8 @@ int main(void)
 
     while (1)
     {
-        if(!c){
+        if (!c)
+        {
             scanf(" %c", &c);
         }
         if (c == 'A')
@@ -49,7 +50,6 @@ int main(void)
             break;
         }
         c = '\0';
-      
     }
 
     deleteGraph_cmd(&head); // free memory

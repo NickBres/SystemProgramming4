@@ -5,7 +5,6 @@
 #include "node.h"
 #include "algo.h"
 
-
 char build_graph_cmd(pnode *head)
 {
     if (*head != NULL) // if graph already exists
@@ -34,8 +33,8 @@ void build_empty_graph(pnode *head, int size)
 {
     for (int i = 0; i < size; i++)
     {
-        pnode new_node = create_node(i); 
-        insert_node(head, new_node);                                  
+        pnode new_node = create_node(i);
+        insert_node(head, new_node);
     }
 };
 
@@ -53,25 +52,24 @@ void insert_node_cmd(pnode *head)
 
     int endpoint_num, weight;
     // get endpoint and weight
-    while(scanf(" %d %d", &endpoint_num, &weight) == 2){
+    while (scanf(" %d %d", &endpoint_num, &weight) == 2)
+    {
         pnode endpoint = find_node(*head, endpoint_num); // find endpoint node
-        if (endpoint == NULL)                           // endpoint node does not exist
+        if (endpoint == NULL)                            // endpoint node does not exist
         {
             endpoint = create_node(endpoint_num);
             insert_node(head, endpoint); // insert new node to graph
         }
         pedge edge = find_edge_to(curr->edges, endpoint); // find edge to endpoint
-        if (edge != NULL)                                // edge already exists
+        if (edge != NULL)                                 // edge already exists
         {
             edge->weight = weight; // update weight
             continue;
         }
-        edge = create_edge(endpoint, weight); // create edge
-        curr->edges = add_edge(curr->edges, edge);               // add edge to node
+        edge = create_edge(endpoint, weight);      // create edge
+        curr->edges = add_edge(curr->edges, edge); // add edge to node
     }
 };
-
-
 
 void delete_node_cmd(pnode *head)
 {
@@ -86,8 +84,6 @@ void delete_node_cmd(pnode *head)
     }
     free_node(head, node); // delete node
 };
-
-
 
 void printGraph_cmd(pnode head)
 {
